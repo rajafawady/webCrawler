@@ -31,12 +31,12 @@ This GitHub repository contains a web crawler implemented in PHP for searching k
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/web-crawler.git
+   git clone https://github.com/rajafawady/web-crawler.git
    ```
 
 2. **Database Setup**
 
-   - Import the provided SQL file (`database.sql`) into your MySQL database to create the necessary tables.
+  - Import the provided SQL file "db/dbsearch.sql" into your MySQL database to create the necessary tables.
 
 3. **Configure Database Connection**
 
@@ -52,7 +52,7 @@ This GitHub repository contains a web crawler implemented in PHP for searching k
 
 6. **Run the Application**
 
-   - Access the application through a web browser by navigating to the appropriate URL.
+   - Access the application through a web browser by navigating to the URL: "localhost/(folder_name that consists project files)"
 
 ## Usage
 
@@ -60,18 +60,20 @@ This GitHub repository contains a web crawler implemented in PHP for searching k
 
 1. Enter the URL and depth on the search form.
 2. Click the "Search" button.
-3. The crawler will display a loading animation, and once completed, it will provide a link to view the results.
+3. The crawler will display a loading animation, and once completed, it will redirect you to a page where you can search for desired keywords in crawled data.
+4. All the crawled data will be stored in jsondata folder, one json file for each unique url.
 
 ### Searching Within Results
 
-1. Access the separate search interface provided.
-2. Enter the keyword and the ID of the previous crawl.
-3. Click the "Search" button.
-4. Matching URLs containing the entered keyword will be displayed.
+1. After redirection you'll have a search bar to search in crawled results.
+2. This page can only be accessed through index.html by crawling a url first, you cannot access this page directly
+3. Enter the keyword and the ID of the previous crawl.
+4. Click the "Search" button.
+5. Matching URLs containing the entered keyword will be displayed.
 
 ## Troubleshooting
 
-- If the crawler is not working as expected, check the console for JavaScript errors and the PHP error logs for server-side issues.
+- If the crawler is not working as expected, check the console for JavaScript errors and the PHP error logs for server-side issues. Or you can contact me at rajafawady@gmail.com
 
 ## Contributions
 
