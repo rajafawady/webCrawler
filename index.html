@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="styles/search.css">
+</head>
+<body>
+    <div class="cont" id="searchCont">
+        <form >
+            <div class="container">
+                <div class="input-cont">
+                    <input class="input1" type="text" placeholder="Url..." name="keyword" id="keyword">
+                    <input class="input2" type="text" placeholder="Depth..." name="depth" id="depth">
+                </div>
+                <button type="submit" id="submitbutton" class="search" onclick="handleSubmit(event)">Search</button>
+            </div>
+        </form>
+    </div>
+
+    <div class='siteResults' id="results"></div>
+
+    <script>
+
+        function closeButtonClickHandler() {
+            var container = document.getElementById("searchCont");
+            results.innerHTML='';
+            //  container.classList.remove('top');
+        }
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the form from submitting in the traditional way
+            var container = document.getElementById("searchCont");
+            var keyword=encodeURIComponent(document.getElementById("keyword").value).trim();
+            var depth=document.getElementById("depth").value;
+            if(keyword && depth){
+                container.style.position="relative";
+                container.style.top="10px";
+                showSearchResults();
+
+            }else{
+                alert("fill all the fields");
+            }
+        }
+
+        function showSearchResults() {
+            var resultCont=document.getElementById("results");
+            resultCont.innerHTML='<div class="progress-circle"></div><h3 class="error">Crawling</h3>';
+            var keyword=encodeURIComponent(document.getElementById("keyword").value).trim();
+            var depth=document.getElementById("depth").value;
+            var arr=JSON.stringify({ key: keyword, deep: depth });
+            const startTime = performance.now();
+        fetch('controller/search.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+            body: arr,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result[0]) {
+                var keywordID=encodeURIComponent(data.result[0]);
+                //var results=data.result;
+                const endTime = performance.now();
+                const elapsedTime = endTime - startTime;
+                var html=`<div class="row">
+                            <p class="result-heading">
+                                Fetched Results in ${(elapsedTime/100).toFixed(2)} seconds
+                            </p>
+                        </div>`;
+                        /*
+                
+                       
+                });*/
+                resultCont.innerHTML=html;
+                setInterval(()=>{
+                    window.location.href=`crawlResults.php?id=${keywordID}`;
+
+                },100);
+            } else {
+                // Handle error
+                console.error('Error Getting Results');
+                resultCont.innerHTML="<div class='error'><p>Error Getting Results</p><button onclick='showSearchResults()'>Try Again</button></div>";
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        };
+
+    </script>
+</body>
+</html>
+
