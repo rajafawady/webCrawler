@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  transition: all 5s ease;
+  
+}
+
+body {
+  background: white;
+}
+.result-heading{
+  font-weight: 600;
+  color: crimson;
+  margin-bottom: 15px;
+  font-family: "Inconsolata", monospace;
+}
+.heading{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#searchCont{
+  position: absolute;
+  top: 35%;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: shrink;
+  column-gap: 5px;
+  width: 100%;
+}
+.input-cont{
+  display: flex;
+  column-gap: 10px;
+}
+.top{
+    position:static;
+    top: 0px;
+    left: 0;
+    right: 0;
+}
+
+.container .search {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid crimson;
+  transition: all 0.5s;
+  background: white;
+  border-radius: 50%;
+  transition: all 1s;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+}
+.container .search:hover {
+  cursor: pointer;
+}
+.container .input1,.container .input2 {
+  font-family: "Inconsolata", monospace;
+  margin: auto;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: none;
+  background: crimson;
+  color: white;
+  text-shadow: 0 0 10px crimson;
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  transition: all 1s;
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+}
+.container .input2{
+  width: 30%;
+}
+.container input:hover {
+  cursor: text;
+}
+.container .input1:focus {
+  width: 30vw;
+  
+}
+.input2:focus ~ .input1 {
+  width: 5vw;
+  display: inline-block;
+}
+.input1:focus ~ .input2 {
+  width: 5vw;
+}
+
+
+
+.container input::placeholder {
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
+}
+
+/* results styles */
+.siteResults 
+{
+    padding: 20px;
+    position: relative;
+    margin-top: 2em;
+}
+
+    .resultContainer 
+{
+	display: flex;
+	flex-direction: column;
+    row-gap:10px;
+    overflow:hidden;
+    position: relative;
+}
+
+.resultContainer .title 
+{
+	margin: 0;
+}
+
+.resultContainer .title a 
+{
+	color: #1a0dab;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 18px;
+
+}
+
+.resultContainer .title a:hover 
+{
+	text-decoration: underline;
+}
+
+.resultContainer .url 
+{
+	color: crimson;
+	font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+
+}
+
+.resultContainer .description 
+{
+	font-size: 16px;
+}
+
+/* progress circle */
+.progress-circle {
+  width: 50px;
+  height: 50px;
+  border: 2px solid crimson;
+  margin: auto;
+  text-align: center ;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+/*cross Button */
+.cross-cont{
+  position: relative;
+}
+#crossButton {
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+  font-size: 20px;
+  color: crimson;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 40px;
+  text-align: center;
+  padding: 5px;
+}
+
+.error{
+  color: red;
+  text-align: center;
+}
+
+.error p{
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.error button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: crimson;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.error button:hover {
+  background-color: #2980b9;
+}
